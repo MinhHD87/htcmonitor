@@ -45,7 +45,7 @@ public class WebInitializer implements WebApplicationInitializer {
         rootDir = servletContext.getRealPath("/");
         rootDir = rootDir.replaceAll("\\\\", "/");
 
-        configDir = rootDir + "WEB-INF/classes/";
+        configDir = rootDir + "/WEB-INF/classes/";
         configDir = configDir.replaceAll("\\\\", "/");
         DBPool.init();
 //        System.out.println("-->rootDir: " + rootDir);

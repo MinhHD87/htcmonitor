@@ -19,7 +19,7 @@ public class DBPool {
 
     static Logger logger = Logger.getLogger(DBPool.class);
     //=============================Connection Pool------------------------------------------
-    private static final String DB_POOL_NAME = "voicebrand";
+    private static final String DB_POOL_NAME = "brand";
     private static ConnectionPoolManager connPoolMng;
     private static ConnectionPool dbpool;
 
