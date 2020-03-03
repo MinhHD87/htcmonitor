@@ -50,4 +50,8 @@
     <definition name="sys-account-edit" extends="authen">  
         <put-attribute name="body" value="/admin/sys-account/edit-account.jsp" />
     </definition>
+    <!--MessageMonitor-->
+    <definition name="message-monitor" extends="authen">  
+        <put-attribute name="body" value="/admin/message-monitor/list-message-monitor.jsp" />
+    </definition>
 </tiles-definitions>

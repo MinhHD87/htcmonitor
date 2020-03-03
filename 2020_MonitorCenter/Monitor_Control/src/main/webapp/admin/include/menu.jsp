@@ -38,6 +38,7 @@
         <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Quản lý hệ thống</span> <span class="label label-important">2</span></a>
             <ul>
                 <li><a href="<c:url value="/admin/sys-account/list"/>">Quản lý tài khoản</a></li>
+                <li><a href="<c:url value="/admin/message-monitor/list"/>">Quản lý message</a></li>
             </ul>
         </li>
 

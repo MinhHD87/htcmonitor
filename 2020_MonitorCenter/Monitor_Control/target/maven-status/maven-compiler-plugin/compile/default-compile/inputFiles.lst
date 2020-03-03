@@ -1,4 +1,5 @@
 C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\2020_MonitorCenter\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\model\SystemMonitor.java
+C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\2020_MonitorCenter\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\services\MessageMonitorService.java
 C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\2020_MonitorCenter\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\model\ext\ConfigAction.java
 C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\2020_MonitorCenter\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\dao\BasicDaoIF.java
 C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\2020_MonitorCenter\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\model\ext\ModelEnum.java
@@ -35,6 +36,7 @@ C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\2020_MonitorCenter\Monitor_
 C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\2020_MonitorCenter\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\commons\FileManipulation.java
 C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\2020_MonitorCenter\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\config\MyContext.java
 C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\2020_MonitorCenter\Monitor_Control\src\main\java\TimeZoneDemo.java
+C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\2020_MonitorCenter\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\services\MessageMonitorServiceImpl.java
 C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\2020_MonitorCenter\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\commons\Tool.java
 C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\2020_MonitorCenter\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\config\UploadFileServlet.java
 C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\2020_MonitorCenter\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\dao\MessageMonitorDaoIF.java
@@ -51,6 +53,7 @@ C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\2020_MonitorCenter\Monitor_
 C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\2020_MonitorCenter\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\db\DBPool.java
 C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\2020_MonitorCenter\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\commons\Queue.java
 C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\2020_MonitorCenter\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\controllers\backend\SessionController.java
+C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\2020_MonitorCenter\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\controllers\backend\MessageMonitorController.java
 C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\2020_MonitorCenter\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\controllers\backend\SysAccountController.java
 C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\2020_MonitorCenter\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\dao\SystemMonitorDaoIF.java
 C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\2020_MonitorCenter\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\dao\SysAccountDaoImpl.java

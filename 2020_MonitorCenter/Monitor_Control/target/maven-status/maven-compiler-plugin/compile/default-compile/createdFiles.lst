@@ -12,6 +12,7 @@ vn\htcjsc\brandname\voice\multipart\request\MultipartFile.class
 vn\htcjsc\brandname\voice\controllers\backend\SessionController.class
 vn\htcjsc\brandname\voice\config\MyContext.class
 vn\htcjsc\brandname\voice\commons\Md5$Fcore.class
+vn\htcjsc\brandname\voice\services\MessageMonitorServiceImpl.class
 vn\htcjsc\brandname\voice\multipart\request\EmptyInputStream.class
 vn\htcjsc\brandname\voice\commons\EmailUtil$1.class
 vn\htcjsc\brandname\voice\dao\SystemMonitorDaoImpl.class
@@ -45,6 +46,7 @@ vn\htcjsc\brandname\voice\services\SysAccountService.class
 vn\htcjsc\brandname\voice\commons\Md5$4.class
 vn\htcjsc\brandname\voice\multipart\request\HttpServletMultipartRequest.class
 vn\htcjsc\brandname\voice\controllers\backend\TempControllerIF.class
+vn\htcjsc\brandname\voice\controllers\backend\MessageMonitorController.class
 vn\htcjsc\brandname\voice\commons\HttpUtil.class
 vn\htcjsc\brandname\voice\multipart\request\ProgressNotifier.class
 vn\htcjsc\brandname\voice\commons\FileUtils.class
@@ -66,6 +68,7 @@ vn\htcjsc\brandname\voice\commons\Md5$1.class
 vn\htcjsc\brandname\voice\commons\Md5.class
 vn\htcjsc\brandname\voice\model\SysAccount.class
 vn\htcjsc\brandname\voice\model\MessageMonitor.class
+vn\htcjsc\brandname\voice\services\MessageMonitorService.class
 vn\htcjsc\brandname\voice\commons\SMSUtils.class
 vn\htcjsc\brandname\voice\model\SystemMonitor.class
 vn\htcjsc\brandname\voice\commons\ExcelUtil.class

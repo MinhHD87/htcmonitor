@@ -1,0 +1,143 @@
+var app = angular.module('listCategoriesApp', ['ui.bootstrap', "ui.select2"]);
+app.filter('unique', function() {
+ 
+  // Take in the collection and which field
+  //   should be unique
+  // We assume an array of objects here
+  // NOTE: We are skipping any object which
+  //   contains a duplicated value for that
+  //   particular key.  Make sure this is what
+  //   you want!
+  return function (arr, targetField) {  
+    var values = [],
+        i, 
+        unique,
+        results = [],
+        obj;
+        
+    // Iterate over all objects in the array
+    // and collect all unique values
+    for( i = 0; i < arr.length; i++ ) {
+      obj = arr[i];
+ 
+      // check for uniqueness
+      unique = true;
+      for( v = 0; v < values.length; v++ ){
+        if( obj[targetField] == values[v] ){
+          unique = false;
+        }
+      }
+ 
+      // If this is indeed unique, add its
+      //   value to our values and push
+      //   it onto the returned array
+      if( unique ){
+        values.push( obj[targetField] );
+        results.push( obj );
+      }
+ 
+    }
+    return results;
+  };
+})
+app.controller('categoriesCtrl', function ($scope, $http, $filter) {
+    $http({
+        method: "POST",
+        url: urlBase + "/admin/cate/rest/data",
+        params: {crPage: "1", maxRow: "2000000000",}
+    }).then(function Succes(resp) {
+        if (resp !== undefined && typeof resp === "object") {
+            $scope.result = resp.data.result;
+            if ($scope.result.code === nologin) {
+                $.unblockUI();
+                location.href = context + adm_login_uri;
+            } else {
+                $scope.cates = resp.data.datas;
+            }
+        }
+    }, function Error(response) {
+        $.unblockUI();
+        $scope.message = response.status;
+    });
+    $scope.reloadFilter = function (str) {
+        var path = $("#module_path").val();
+        $.blockUI({message: '<img src="' + context + '/admin/images/indicator_48.gif" />'});
+        $http({
+            method: "POST",
+            url: urlBase + "/admin/cate/rest/data",
+            params: {crPage: $scope.crPage, maxRow: $scope.maxRow, name: $scope.name, parentName: $scope.parentName, status: $scope.status}
+        }).then(function Succes(resp) {
+            if (resp !== undefined && typeof resp === "object") {
+                $scope.result = resp.data.result;
+                if ($scope.result.code === nologin) {
+                    $.unblockUI();
+                    location.href = context + adm_login_uri;
+                } else {
+                    $scope.datas = resp.data.datas;
+                    $scope.totalRow = resp.data.totalRow;
+                    $scope.myEnum = resp.data.myEnum;
+                    $scope.roles = resp.data.roles;
+                    if (!angular.isUndefined(str) && str !== '') {
+                        $scope.result.message = str;
+                    }
+                    blink_text('callback_info', 5000);
+                    $.unblockUI();
+                }
+            }
+        }, function Error(response) {
+            $.unblockUI();
+            $scope.message = response.status;
+        });
+    };
+    $scope.init = function () {
+        $scope.crPage = '1';
+        $scope.maxRow = '20';
+        $scope.status = '127';
+        $scope.name = '';
+        $scope.parentName = '';
+        
+    };
+    $scope.reset = function () {
+        $scope.crPage = '1';
+        $scope.maxRow = '20';
+        $scope.status = '127';
+        $scope.name = '';
+        $scope.parentName = '';
+        $scope.reloadFilter();
+    };
+    $scope.$watch('crPage + crPage', function () {
+        $scope.reloadFilter();
+    });
+    $scope.pageChanged = function () {
+        $scope.crPage = this.crPage;
+    };
+    $scope.updateMaxRow = function () {
+        $scope.crPage = 1;
+        $scope.reloadFilter();
+    };
+    $scope.delete = function (id) {
+        $("#result_model").text('');
+        jConfirm('<b style="color:red">Bạn chắc chắn muốn xóa chuyên mục này?</b>', 'Confirm', function (r) {
+            if (r) {
+                $http({
+                    method: "POST",
+                    url: urlBase + "/admin/cate/rest/delete",
+                    params: {id: id}
+                }).then(function Succes(resp) {
+                    if (resp !== undefined && typeof resp === "object") {
+                        $scope.result = resp.data.result;
+                        if ($scope.result.code === nologin) {
+                            location.href = context + adm_login_uri;
+                        } else {
+                            if ($scope.result.code === success) {
+                                $scope.reloadFilter($scope.result.message);
+                            }
+                        }
+                    }
+                }, function Error(response) {
+                    $scope.message = response.status;
+                });
+            }
+        });
+    };
+});

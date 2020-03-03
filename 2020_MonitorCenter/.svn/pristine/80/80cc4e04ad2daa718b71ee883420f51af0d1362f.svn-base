@@ -1,0 +1,204 @@
+<%@page contentType="text/html; charset=utf-8" %><%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %><%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb">
+            <a href="<c:url value="/admin/index"/>" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> 
+            <a cl href="<c:url value="/admin/cate/list"/>" class="tip-bottom">Quản lý Chuyên mục</a>
+            <a cl href="<c:url value="#"/>" class="current">Cập nhật Chuyên mục</a>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12" style="padding-top: 5px">
+                <c:if test="${result.code==0}">
+                    <div id="alert alert-error" class="alert"><button class="close" data-dismiss="alert">×</button><strong>Error!</strong> ${result.message}</div>
+                </c:if>
+                <div class="widget-box">
+                    <div class="widget-content nopadding">
+                        <form:form  id="addCategoriesfrm" action="" modelAttribute="categories" method="post">
+                            <table class="table table-bordered table-striped">
+                                <tbody>
+                                    <tr>
+                                        <td>Chuyên mục cha</td>
+                                        <td>
+                                            <form:select style="width: 350px;vertical-align: middle" id="parentName" name="ParentName" path="parentName" placeholder="Chọn chuyên mục cha">
+                                                <form:option value=" ">Chọn chuyên mục cha</form:option>
+                                                <c:forEach var="s" items="${listParent}">
+                                                    <form:option value="${s.parentName}">${s.parentName}</form:option>
+                                                </c:forEach>
+                                            </form:select>
+                                        </td>
+                                        <td>Tên chuyên mục</td>
+                                        <td><form:input style="width: 350px" type="text" path="name" id="name" cssClass="span8"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Số thứ tự</td>
+                                        <td><form:input style="width: 350px" type="text" path="num" id="num" cssClass="span8"/></td>
+                                        <td>Icon</td>
+                                        <td>
+                                            <form:hidden id="icon" path="icon"/>
+                                            <div class="col-lg-12">
+                                                    <!--<h3>Icon</h3>-->
+                                                    <div class="avatar">
+                                                            <img id="imgpreview"
+                                                                    src="${imge}"
+                                                                    class="img-fluid" style="max-width: 300px; max-height: 300px;" />
+                                                    </div>
+                                                    <div class="file-field">
+                                                            <p>
+                                                                    <strong id="xImagePath">Selected Image URL</strong><br /> <input
+                                                                            class="btn btn-primary btn-sm waves-effect waves-light"
+                                                                            type="button" value="Browse Image"
+                                                                            onclick="BrowseServer( 'Images:/', 'xImagePath' );" />
+                                                            </p>
+                                                    </div>
+
+                                                    <p>Note: You should select image !</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Trạng Thái</td>
+                                        <td>
+                                            <form:select style="width: 350px;vertical-align: middle" path="status" name="status" id="status" ng-model="status">
+                                                <c:forEach var="s" items="${lstatus}">
+                                                    <form:option value="${s.val}">${s.desc}</form:option>
+                                                </c:forEach>
+                                            </form:select>
+                                        </td>
+                                        <td>Mô tả</td>
+                                        <td><form:input style="width: 350px" type="text" path="description" id="description" cssClass="span8"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="img-center" colspan="6" align="center">
+                                            <input id="btnSubmit" class="btn btn-success" name="submit" value="Cập nhật Chuyên mục" type="submit"/>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input onclick="location.href = '<c:url value="/admin/cate/list"/>'" class="btn btn-danger" name="back" value="Quay lại" type="button"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="<c:url value='/static/ckeditor/ckeditor.js'/>"></script>
+<script src="<c:url value='/ckfinder/ckfinder.js'/>"></script>
+<script>
+    function BrowseServer(startupPath, functionData) {
+			// You can use the "CKFinder" class to render CKFinder in a page:
+			var finder = new CKFinder();
+
+			// The path for the installation of CKFinder (default = "/ckfinder/").
+			finder.basePath = '../';
+
+			//Startup path in a form: "Type:/path/to/directory/"
+			finder.startupPath = startupPath;
+
+			// Name of a function which is called when a file is selected in CKFinder.
+			finder.selectActionFunction = SetFileField;
+
+			// Additional data to be passed to the selectActionFunction in a second argument.
+			// We'll use this feature to pass the Id of a field that will be updated.
+			finder.selectActionData = functionData;
+
+			// Name of a function which is called when a thumbnail is selected in CKFinder. Preview img
+			// finder.selectThumbnailActionFunction = ShowThumbnails;
+
+			// Launch CKFinder
+			finder.popup();
+		}
+
+		// This is a sample function which is called when a file is selected in CKFinder.
+		function SetFileField(fileUrl, data) {
+			document.getElementById(data["selectActionData"]).innerHTML = this
+					.getSelectedFile().name;
+			document.getElementById("imgpreview").src = fileUrl;
+			document.getElementById("icon").value = fileUrl;
+		}
+</script>
+<script src="<c:url value='/admin/js/jquery.min.js'/>"></script>
+<script src="<c:url value='/admin/js/jquery.validate.js'/>"></script>
+<script src="<c:url value='/admin/js/select2.min.js'/>"></script>
+<script src="<c:url value='/admin/js/jquery.ui.custom.js'/>"></script>
+<script src="<c:url value='/admin/js/bootstrap.min.js'/>"></script>
+<script src="<c:url value='/admin/js/jquery.alerts.js'/>"></script>
+<script>
+//$("#editModulefrm").validate({
+//    rules: {
+//        name: "required", path: "required"
+//    }
+//});
+//</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+    $("#parentName").select2({
+        matcher: customMatcher,
+        placeholder: "Chọn Thư mục cha"
+    });
+    $("#icon").select2({
+        matcher: customMatcher,
+        placeholder: "Chọn Thư mục cha"
+    });
+    var statusRegex = /^(?!\.*127).*$/;   
+    var numRegex = /[1-9].*$/;
+    jQuery("#addCategoriesfrm").validate({
+        rules: {
+            name: {
+                required: true
+            },
+            num: {
+                required: true,
+                regex: numRegex
+            },
+            icon: {
+                required: true
+            },
+            status: {
+                regex: statusRegex
+            }
+        },
+        messages: {
+            name: {
+                required: "Bắt buộc phải chọn tên chuyên mục"
+            },
+            num: {
+                required: "Bắt buộc phải chọn vị trí",
+                regex: "Vị trí phải lớn hơn 0"
+            },
+            icon: {
+                required: "Bắt buộc phải chọn hình đại diện"
+            },
+            status: {
+                regex: "Bắt buộc phải chọn trạng thái"
+            }
+        },
+//    var pasReg = /^(?=.*[0-9])(?=.*[!@#$%^&*()])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{8,30}$/;
+//    var pasPhone = /^\+(?:[0-9] ?){6,14}[0-9]$/;
+//    $("#addBlackListfrm").validate({
+//        ignore: 'input[type=hidden]',
+//        rules: {
+//            userblock: {
+//                required: true,
+//                valueNotEquals: ""
+//            },
+//            agency_code: {
+//                required: true,
+//                valueNotEquals: ""
+//            },
+//            oper: {
+//                required: true,
+//                valueNotEquals: ""
+//            },
+//            phone: {
+//                required: true,
+//                regex: pasPhone
+//            }
+//        }
+//    });
+    });
+});
+</script>

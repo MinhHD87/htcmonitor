@@ -11,7 +11,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Repository;
 import vn.htcjsc.brandname.voice.commons.Tool;
+import vn.htcjsc.brandname.voice.config.MyConfig;
 import vn.htcjsc.brandname.voice.db.DBPool;
 
 import vn.htcjsc.brandname.voice.model.MessageMonitor;
@@ -20,20 +22,19 @@ import vn.htcjsc.brandname.voice.model.MessageMonitor;
  *
  * @author hoan
  */
-//@Repository("messageMonitorDao")
+
+@Repository("messageMonitorDao")
 public class MessageMonitorDaoImpl implements MessageMonitorDaoIF {
 
     static final Logger logger = Logger.getLogger(MessageMonitorDaoImpl.class);
 
-
-
     @Override
-    public ArrayList<MessageMonitor> getInfo() {
+    public ArrayList<MessageMonitor> listMessageMonitor() {
                 ArrayList<MessageMonitor> list = new ArrayList<>();
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "SELECT * FROM message ORDER BY ID DESC";
+        String sql = "SELECT * FROM MESSAGE ORDER BY ID DESC";
         try {
             conn = DBPool.getConnection();
             ps = conn.prepareStatement(sql);
@@ -60,5 +61,133 @@ public class MessageMonitorDaoImpl implements MessageMonitorDaoIF {
         }
         return list;
     }
+
+    @Override
+    public ArrayList<MessageMonitor> view(int page, int maxRow, String name, String ip, int status) {
+   
+        ArrayList<MessageMonitor> result = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        String sql = "SELECT A.* FROM MESSAGE A WHERE  ";
+        if (!Tool.checkNull(name)) {
+            sql += "  NAME = ?";
+        }
+        if (!Tool.checkNull(ip)) {
+            sql += " AND IP = ? ";
+        }
+        if (status != MyConfig.STATUS.ALL.val) {
+            sql += " AND STATUS = ? ";
+        }
+        sql += " ORDER BY A.ID DESC LIMIT ?,?";
+        try {
+            conn = DBPool.getConnection();
+            pstm = conn.prepareStatement(sql);
+            int i = 1;
+            if (!Tool.checkNull(name)) {
+                pstm.setString(i++, name);
+            }
+            if (!Tool.checkNull(ip)) {
+                pstm.setString(i++, ip);
+            }
+            if (status != MyConfig.STATUS.ALL.val) {
+                pstm.setInt(i++, status);
+            }
+            pstm.setInt(i++, (page - 1) * maxRow);
+            pstm.setInt(i++, maxRow);
+            rs = pstm.executeQuery();
+            while (rs.next()) {
+                 MessageMonitor one = new MessageMonitor();
+                one.setId(rs.getInt("ID"));
+                one.setName(rs.getString("NAME"));
+                one.setIp(rs.getString("IP"));
+                one.setContent(rs.getString("CONTENT"));
+                one.setCode(rs.getString("CODE"));
+                one.setSento(rs.getString("SENDTO"));
+                one.setStatus(rs.getInt("STATUS"));
+                one.setType(rs.getInt("TYPE"));
+                one.setTimesend(rs.getTimestamp("TIMESEND"));
+                
+                result.add(one);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            logger.error(Tool.getLogMessage(ex));
+        } finally {
+            DBPool.freeConn(rs, pstm, conn);
+        }
+        return result;
+    }
+    
+     @Override
+    public int count(String key, String ip, String sento, int status) {
+      int result = 0;
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        String sql = "SELECT count(*) FROM MESSAGE A ";
+        if (!Tool.checkNull(key)) {
+            sql += " WHERE NAME like ?  ";
+        }
+        if (!Tool.checkNull(ip)) {
+            sql += " AND IP = ? ";
+        }
+        if (!Tool.checkNull(sento)) {
+            sql += " AND SENDTO = ? ";
+        }
+        if (status != MyConfig.STATUS.ALL.val) {
+            sql += " AND STATUS = ? ";
+        }
+        try {
+            conn = DBPool.getConnection();
+            pstm = conn.prepareStatement(sql);
+            int i = 1;
+            if (!Tool.checkNull(key)) {
+                pstm.setString(i++, "%" + key + "%");
+               
+            }
+            if (!Tool.checkNull(ip)) {
+                pstm.setString(i++, ip);
+            }
+            if (!Tool.checkNull(sento)) {
+                pstm.setString(i++, sento);
+            }
+            if (status != MyConfig.STATUS.ALL.val) {
+                pstm.setInt(i++, status);
+            }
+            rs = pstm.executeQuery();
+            if (rs.next()) {
+                result = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            logger.error(Tool.getLogMessage(ex));
+        } finally {
+            DBPool.freeConn(rs, pstm, conn);
+        }
+        return result;
+    }
+
+    @Override
+    public MessageMonitor findById(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int create(MessageMonitor one) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public MessageMonitor update(MessageMonitor one) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public MessageMonitor delete(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
+       
 
 }
