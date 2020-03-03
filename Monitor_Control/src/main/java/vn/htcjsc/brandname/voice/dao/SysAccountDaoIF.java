@@ -16,13 +16,7 @@ public interface SysAccountDaoIF extends BasicDaoIF<SysAccount> {
 
     public ArrayList<SysAccount> view(int page, int maxRow, String key, String phone, String email, int status);
 
-    public int count(String key, String phone, String email, int status);
-
-    public ArrayList<SysAccount> findSysAccountOnRole(int page, int maxrow, String key);
-
-    public int countSysAccountOnRole(String key);
-
-    public ArrayList<SysAccount> findAllSysAccountActive(String key);
+    public int count(String key, String phone, String email, int status) ;
 
     public SysAccount checkLoginDB(String user, String pass);
 

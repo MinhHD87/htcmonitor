@@ -1,20 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vn.htcjsc.brandname.voice.services;
 
-import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import vn.htcjsc.brandname.voice.dao.SysAccountDaoIF;
 import vn.htcjsc.brandname.voice.model.SysAccount;
 
-/**
- *
- * @author Private
- */
 public interface SysAccountService extends SysAccountDaoIF {
 
     public SysAccount getSysAccountLogin(HttpSession session);
@@ -24,9 +14,4 @@ public interface SysAccountService extends SysAccountDaoIF {
     public SysAccount getSysAccountLogin(HttpServletRequest request);
 
     public boolean updateIsdelete(int accID);
-
-    //--Check Right Methol
-    public HashMap<String, Boolean> checkRight(HttpServletRequest request);
-
-    public boolean checkAccess(HttpServletRequest request);
 }

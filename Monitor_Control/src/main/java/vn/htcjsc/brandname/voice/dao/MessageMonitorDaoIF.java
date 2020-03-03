@@ -13,6 +13,12 @@ import vn.htcjsc.brandname.voice.model.MessageMonitor;
  * @author hoan
  */
 public interface MessageMonitorDaoIF extends BasicDaoIF<MessageMonitor>{
-    public ArrayList<MessageMonitor> getInfo();
-    
+
+    public ArrayList<MessageMonitor> listMessageMonitor();
+
+    public ArrayList<MessageMonitor> view(int page, int maxRow, String name, String ip, int status);
+    public int count(String key, String ip, String sento, int status) ;
+
+  
+
 }

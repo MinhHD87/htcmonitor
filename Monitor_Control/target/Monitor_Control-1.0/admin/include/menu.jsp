@@ -39,6 +39,9 @@
             <ul>
                 <li><a href="<c:url value="/admin/sys-account/list"/>">Quản lý tài khoản</a></li>
             </ul>
+            <ul>
+                <li><a href="<c:url value="/admin/message-monitor/list"/>">Quản lý message</a></li>
+            </ul>
         </li>
 
     </ul>

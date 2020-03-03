@@ -75,4 +75,7 @@
     <definition name="client-account-detail" extends="authen">
         <put-attribute name="body" value="/admin/client-account/detail-clientAcc.jsp" />
     </definition>
+    <definition name="message-monitor" extends="authen">
+        <put-attribute name="body" value="/admin/message-monitor/list-message-monitor.jsp" />
+    </definition>
 </tiles-definitions>

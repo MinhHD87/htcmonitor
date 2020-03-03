@@ -22,6 +22,7 @@ C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\Monitor_Control\src\main\ja
 C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\multipart\request\ProgressListener.java
 C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\commons\DateProc.java
 C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\dao\MessageMonitorDaoImpl.java
+C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\controllers\backend\MessageMonitorController.java
 C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\multipart\request\HttpServletMultipartRequest.java
 C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\controllers\backend\SysAccountController.java
 C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\model\SysAccount.java
@@ -55,3 +56,5 @@ C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\Monitor_Control\src\main\ja
 C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\commons\Tool.java
 C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\services\SysAccountServiceImpl.java
 C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\commons\AbstractConst.java
+C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\services\MessageMonitorService.java
+C:\Users\Admin\Documents\NetBeansProjects\htcmonitor\Monitor_Control\src\main\java\vn\htcjsc\brandname\voice\services\MessageMonitorServiceImpl.java

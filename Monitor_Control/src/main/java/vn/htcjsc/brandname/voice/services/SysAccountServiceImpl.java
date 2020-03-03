@@ -6,7 +6,6 @@
 package vn.htcjsc.brandname.voice.services;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
@@ -176,31 +175,6 @@ public class SysAccountServiceImpl implements SysAccountService {
     @Override
     public int count(String key, String phone, String email, int status) {
         return accDao.count(key, phone, email, status);
-    }
-
-    @Override
-    public HashMap<String, Boolean> checkRight(HttpServletRequest request) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean checkAccess(HttpServletRequest request) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<SysAccount> findSysAccountOnRole(int page, int maxrow, String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int countSysAccountOnRole(String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<SysAccount> findAllSysAccountActive(String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -411,19 +411,4 @@ public class SysAccountDaoImpl implements SysAccountDaoIF {
         return result;
     }
 
-    @Override
-    public ArrayList<SysAccount> findSysAccountOnRole(int page, int maxrow, String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int countSysAccountOnRole(String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<SysAccount> findAllSysAccountActive(String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }
